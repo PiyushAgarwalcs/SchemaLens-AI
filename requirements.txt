@@ -1,0 +1,12 @@
+﻿streamlit
+sqlalchemy
+psycopg2-binary
+crewai
+langchain-openai
+langchain-core
+python-dotenv
+pandas
+faker
+pydantic
+mcp
+httpx

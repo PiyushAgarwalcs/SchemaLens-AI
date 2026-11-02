@@ -1,0 +1,2399 @@
+{
+  "generated_at": "2026-07-08T11:17:12.272882+00:00",
+  "pii_masking_enabled": true,
+  "tables": [
+    {
+      "table_name": "users",
+      "columns": [
+        {
+          "name": "usersnode",
+          "type": "BIGINT",
+          "nullable": false,
+          "is_primary_key": true,
+          "foreign_key": null
+        },
+        {
+          "name": "userstamp",
+          "type": "CHAR(36)",
+          "nullable": false,
+          "is_primary_key": false,
+          "foreign_key": null
+        },
+        {
+          "name": "acctscope",
+          "type": "VARCHAR(7)",
+          "nullable": true,
+          "is_primary_key": false,
+          "foreign_key": null
+        }
+      ],
+      "sample_rows": [
+        {
+          "usersnode": 1,
+          "userstamp": "U583322                             ",
+          "acctscope": "Margin"
+        },
+        {
+          "usersnode": 2,
+          "userstamp": "U810391                             ",
+          "acctscope": "Spot"
+        },
+        {
+          "usersnode": 3,
+          "userstamp": "U485932                             ",
+          "acctscope": "Options"
+        },
+        {
+          "usersnode": 4,
+          "userstamp": "U342072                             ",
+          "acctscope": "Options"
+        },
+        {
+          "usersnode": 5,
+          "userstamp": "U575806                             ",
+          "acctscope": "Margin"
+        },
+        {
+          "usersnode": 6,
+          "userstamp": "U388201                             ",
+          "acctscope": "Options"
+        },
+        {
+          "usersnode": 7,
+          "userstamp": "U451997                             ",
+          "acctscope": "Spot"
+        },
+        {
+          "usersnode": 8,
+          "userstamp": "U911816                             ",
+          "acctscope": "Spot"
+        }
+      ],
+      "pii_columns_masked": []
+    },
+    {
+      "table_name": "riskandmargin",
+      "columns": [
+        {
+          "name": "riskandmarginpivot",
+          "type": "BIGINT",
+          "nullable": false,
+          "is_primary_key": true,
+          "foreign_key": null
+        },
+        {
+          "name": "ordervault",
+          "type": "CHAR(36)",
+          "nullable": true,
+          "is_primary_key": false,
+          "foreign_key": "orders.recordvault"
+        },
+        {
+          "name": "risk_margin_profile",
+          "type": "JSONB",
+          "nullable": true,
+          "is_primary_key": false,
+          "foreign_key": null
+        }
+      ],
+      "sample_rows": [
+        {
+          "riskandmarginpivot": 2,
+          "ordervault": "OB798737                            ",
+          "risk_margin_profile": {
+            "iceberg": {
+              "viscount": 7.152985,
+              "icebcount": 0.88799
+            },
+            "leverage": {
+              "levscale": "1",
+              "margform": null
+            },
+            "position": {
+              "possum": 12995.76,
+              "posedge": null,
+              "posmagn": "1",
+              "poscount": 1.29,
+              "posriskrate": 0.024
+            },
+            "collateral": {
+              "collsum": 719677.95,
+              "collcoin": "USDC",
+              "collrate": 0.48,
+              "insfundshare": 10.09
+            },
+            "margin_rates": {
+              "margrate": 0.264,
+              "bkptquote": 4564.25,
+              "margcallquote": 11219.32
+            },
+            "price_levels": {
+              "liqquote": 14140.01,
+              "stopquote": 10308.06,
+              "traildiff": 0.02,
+              "trigquote": 10689.56
+            },
+            "risk_factors": {
+              "cpfactor": "0.823",
+              "liqfactor": "0.171",
+              "netfactor": "0.896",
+              "regfactor": "0.975",
+              "setfactor": "0.755",
+              "custfactor": "0.544"
+            },
+            "margin_thresholds": {
+              "inithold": 81019.9,
+              "mainthold": 40509.95
+            }
+          }
+        },
+        {
+          "riskandmarginpivot": 3,
+          "ordervault": "OB179652                            ",
+          "risk_margin_profile": {
+            "iceberg": {
+              "viscount": 5.334452,
+              "icebcount": 2.641267
+            },
+            "leverage": {
+              "levscale": "2",
+              "margform": null
+            },
+            "position": {
+              "possum": 990687.61,
+              "posedge": "Short",
+              "posmagn": "2",
+              "poscount": 92.888,
+              "posriskrate": 0.553
+            },
+            "collateral": {
+              "collsum": 19000.13,
+              "collcoin": "USDT",
+              "collrate": 0.438,
+              "insfundshare": 4.53
+            },
+            "margin_rates": {
+              "margrate": 0.826,
+              "bkptquote": 11913.55,
+              "margcallquote": 6818.72
+            },
+            "price_levels": {
+              "liqquote": 11661.77,
+              "stopquote": 10558.32,
+              "traildiff": 0.03,
+              "trigquote": 11263.9
+            },
+            "risk_factors": {
+              "cpfactor": "0.286",
+              "liqfactor": "0.639",
+              "netfactor": "0.803",
+              "regfactor": "0.416",
+              "setfactor": "0.538",
+              "custfactor": "0.728"
+            },
+            "margin_thresholds": {
+              "inithold": 42532.07,
+              "mainthold": 21266.03
+            }
+          }
+        },
+        {
+          "riskandmarginpivot": 4,
+          "ordervault": "OB827275                            ",
+          "risk_margin_profile": {
+            "iceberg": {
+              "viscount": 4.113913,
+              "icebcount": 3.403397
+            },
+            "leverage": {
+              "levscale": "3",
+              "margform": null
+            },
+            "position": {
+              "possum": 1210450.2,
+              "posedge": "Long",
+              "posmagn": "1",
+              "poscount": 32.377,
+              "posriskrate": 0.836
+            },
+            "collateral": {
+              "collsum": 87696.52,
+              "collcoin": "USDT",
+              "collrate": 0.381,
+              "insfundshare": 38.45
+            },
+            "margin_rates": {
+              "margrate": 0.403,
+              "bkptquote": 27881.46,
+              "margcallquote": 40130.12
+            },
+            "price_levels": {
+              "liqquote": 34894.2,
+              "stopquote": 34914.37,
+              "traildiff": 0.038,
+              "trigquote": 35326.06
+            },
+            "risk_factors": {
+              "cpfactor": "0.712",
+              "liqfactor": "0.959",
+              "netfactor": "0.226",
+              "regfactor": "0.421",
+              "setfactor": "0.296",
+              "custfactor": "0.199"
+            },
+            "margin_thresholds": {
+              "inithold": 93681.57,
+              "mainthold": 46840.79
+            }
+          }
+        },
+        {
+          "riskandmarginpivot": 5,
+          "ordervault": "OB736523                            ",
+          "risk_margin_profile": {
+            "iceberg": {
+              "viscount": 1.847677,
+              "icebcount": 1.199823
+            },
+            "leverage": {
+              "levscale": "50",
+              "margform": null
+            },
+            "position": {
+              "possum": 4210517.7,
+              "posedge": "Short",
+              "posmagn": "1",
+              "poscount": 88.132,
+              "posriskrate": 0.014
+            },
+            "collateral": {
+              "collsum": 695196.4,
+              "collcoin": "USDT",
+              "collrate": 0.863,
+              "insfundshare": 70.48
+            },
+            "margin_rates": {
+              "margrate": 0.012,
+              "bkptquote": 21954.79,
+              "margcallquote": 30258.92
+            },
+            "price_levels": {
+              "liqquote": 63875.47,
+              "stopquote": 49999.21,
+              "traildiff": 0.012,
+              "trigquote": 46596.32
+            },
+            "risk_factors": {
+              "cpfactor": "0.712",
+              "liqfactor": "0.966",
+              "netfactor": "0.924",
+              "regfactor": "0.946",
+              "setfactor": "0.169",
+              "custfactor": "0.73"
+            },
+            "margin_thresholds": {
+              "inithold": 2911.88,
+              "mainthold": 1455.94
+            }
+          }
+        },
+        {
+          "riskandmarginpivot": 6,
+          "ordervault": "OB575491                            ",
+          "risk_margin_profile": {
+            "iceberg": {
+              "viscount": 3.304174,
+              "icebcount": 2.911505
+            },
+            "leverage": {
+              "levscale": "3",
+              "margform": "Isolated"
+            },
+            "position": {
+              "possum": 230309.48,
+              "posedge": null,
+              "posmagn": "10",
+              "poscount": 9.668,
+              "posriskrate": 0.679
+            },
+            "collateral": {
+              "collsum": 932180.4,
+              "collcoin": "USDC",
+              "collrate": 0.884,
+              "insfundshare": 87.02
+            },
+            "margin_rates": {
+              "margrate": 0.609,
+              "bkptquote": 15681.39,
+              "margcallquote": 24050.23
+            },
+            "price_levels": {
+              "liqquote": 31133.27,
+              "stopquote": 22133.95,
+              "traildiff": 0.03,
+              "trigquote": 22082.39
+            },
+            "risk_factors": {
+              "cpfactor": "0.325",
+              "liqfactor": "0.414",
+              "netfactor": "0.653",
+              "regfactor": "0.116",
+              "setfactor": "0.368",
+              "custfactor": "0.937"
+            },
+            "margin_thresholds": {
+              "inithold": 49355.93,
+              "mainthold": 24677.97
+            }
+          }
+        },
+        {
+          "riskandmarginpivot": 7,
+          "ordervault": "OB892943                            ",
+          "risk_margin_profile": {
+            "iceberg": {
+              "viscount": 0.512129,
+              "icebcount": 0.305535
+            },
+            "leverage": {
+              "levscale": "10",
+              "margform": null
+            },
+            "position": {
+              "possum": 695209.43,
+              "posedge": "Long",
+              "posmagn": "2",
+              "poscount": 22.945,
+              "posriskrate": 0.538
+            },
+            "collateral": {
+              "collsum": 719471.79,
+              "collcoin": "USDC",
+              "collrate": 0.385,
+              "insfundshare": 67.29
+            },
+            "margin_rates": {
+              "margrate": 0.233,
+              "bkptquote": 19222.35,
+              "margcallquote": 32369.69
+            },
+            "price_levels": {
+              "liqquote": 35690.06,
+              "stopquote": 28981.01,
+              "traildiff": 0.015,
+              "trigquote": 32426.73
+            },
+            "risk_factors": {
+              "cpfactor": "0.435",
+              "liqfactor": "0.975",
+              "netfactor": "0.18",
+              "regfactor": "0.349",
+              "setfactor": "0.848",
+              "custfactor": "0.11"
+            },
+            "margin_thresholds": {
+              "inithold": 2477.42,
+              "mainthold": 1238.71
+            }
+          }
+        },
+        {
+          "riskandmarginpivot": 8,
+          "ordervault": "OB824478                            ",
+          "risk_margin_profile": {
+            "iceberg": {
+              "viscount": 3.977232,
+              "icebcount": 2.295108
+            },
+            "leverage": {
+              "levscale": "3",
+              "margform": null
+            },
+            "position": {
+              "possum": 498665.15,
+              "posedge": "Short",
+              "posmagn": "2",
+              "poscount": 37.883,
+              "posriskrate": 0.217
+            },
+            "collateral": {
+              "collsum": 835613.37,
+              "collcoin": "USDC",
+              "collrate": 0.481,
+              "insfundshare": 82.39
+            },
+            "margin_rates": {
+              "margrate": 0.816,
+              "bkptquote": 14555.18,
+              "margcallquote": 8853.83
+            },
+            "price_levels": {
+              "liqquote": 10479.55,
+              "stopquote": 11978.2,
+              "traildiff": 0.027,
+              "trigquote": 13429.29
+            },
+            "risk_factors": {
+              "cpfactor": "0.467",
+              "liqfactor": "0.745",
+              "netfactor": "0.612",
+              "regfactor": "0.523",
+              "setfactor": "0.18",
+              "custfactor": "0.081"
+            },
+            "margin_thresholds": {
+              "inithold": 27521.67,
+              "mainthold": 13760.83
+            }
+          }
+        },
+        {
+          "riskandmarginpivot": 9,
+          "ordervault": "OB214938                            ",
+          "risk_margin_profile": {
+            "iceberg": {
+              "viscount": 1.316857,
+              "icebcount": 0.291721
+            },
+            "leverage": {
+              "levscale": "20",
+              "margform": "Isolated"
+            },
+            "position": {
+              "possum": 2421836.08,
+              "posedge": null,
+              "posmagn": "50",
+              "poscount": 50.558,
+              "posriskrate": 0.95
+            },
+            "collateral": {
+              "collsum": 380395.32,
+              "collcoin": "USDT",
+              "collrate": 0.605,
+              "insfundshare": 99.33
+            },
+            "margin_rates": {
+              "margrate": 0.249,
+              "bkptquote": 25306.25,
+              "margcallquote": 49265.94
+            },
+            "price_levels": {
+              "liqquote": 33979.06,
+              "stopquote": 45764.64,
+              "traildiff": 0.016,
+              "trigquote": 50818.3
+            },
+            "risk_factors": {
+              "cpfactor": "0.826",
+              "liqfactor": "0.979",
+              "netfactor": "0.27",
+              "regfactor": "0.406",
+              "setfactor": "0.564",
+              "custfactor": "0.487"
+            },
+            "margin_thresholds": {
+              "inithold": 3852.73,
+              "mainthold": 1926.37
+            }
+          }
+        }
+      ],
+      "pii_columns_masked": []
+    },
+    {
+      "table_name": "orders",
+      "columns": [
+        {
+          "name": "orderspivot",
+          "type": "BIGINT",
+          "nullable": false,
+          "is_primary_key": true,
+          "foreign_key": null
+        },
+        {
+          "name": "recordvault",
+          "type": "CHAR(36)",
+          "nullable": false,
+          "is_primary_key": false,
+          "foreign_key": null
+        },
+        {
+          "name": "timecode",
+          "type": "TIMESTAMP",
+          "nullable": false,
+          "is_primary_key": false,
+          "foreign_key": null
+        },
+        {
+          "name": "exchspot",
+          "type": "CHAR(10)",
+          "nullable": true,
+          "is_primary_key": false,
+          "foreign_key": null
+        },
+        {
+          "name": "mktnote",
+          "type": "VARCHAR(30)",
+          "nullable": true,
+          "is_primary_key": false,
+          "foreign_key": null
+        },
+        {
+          "name": "orderstamp",
+          "type": "CHAR(36)",
+          "nullable": true,
+          "is_primary_key": false,
+          "foreign_key": null
+        },
+        {
+          "name": "userlink",
+          "type": "CHAR(36)",
+          "nullable": true,
+          "is_primary_key": false,
+          "foreign_key": "users.userstamp"
+        },
+        {
+          "name": "ordertune",
+          "type": "VARCHAR(9)",
+          "nullable": true,
+          "is_primary_key": false,
+          "foreign_key": null
+        },
+        {
+          "name": "dealedge",
+          "type": "VARCHAR(4)",
+          "nullable": true,
+          "is_primary_key": false,
+          "foreign_key": null
+        },
+        {
+          "name": "dealquote",
+          "type": "NUMERIC(12, 3)",
+          "nullable": true,
+          "is_primary_key": false,
+          "foreign_key": null
+        },
+        {
+          "name": "dealcount",
+          "type": "NUMERIC(12, 4)",
+          "nullable": true,
+          "is_primary_key": false,
+          "foreign_key": null
+        },
+        {
+          "name": "notionsum",
+          "type": "NUMERIC(12, 3)",
+          "nullable": true,
+          "is_primary_key": false,
+          "foreign_key": null
+        },
+        {
+          "name": "orderflow",
+          "type": "VARCHAR(15)",
+          "nullable": true,
+          "is_primary_key": false,
+          "foreign_key": null
+        },
+        {
+          "name": "timespan",
+          "type": "VARCHAR(3)",
+          "nullable": true,
+          "is_primary_key": false,
+          "foreign_key": null
+        },
+        {
+          "name": "orderbase",
+          "type": "VARCHAR(6)",
+          "nullable": true,
+          "is_primary_key": false,
+          "foreign_key": null
+        },
+        {
+          "name": "clientmark",
+          "type": "VARCHAR(80)",
+          "nullable": true,
+          "is_primary_key": false,
+          "foreign_key": null
+        },
+        {
+          "name": "createspot",
+          "type": "TIMESTAMP",
+          "nullable": true,
+          "is_primary_key": false,
+          "foreign_key": null
+        },
+        {
+          "name": "updatespot",
+          "type": "TIMESTAMP",
+          "nullable": true,
+          "is_primary_key": false,
+          "foreign_key": null
+        }
+      ],
+      "sample_rows": [
+        {
+          "orderspivot": 1,
+          "recordvault": "OB333576                            ",
+          "timecode": "2025-02-19 08:29:46.049442",
+          "exchspot": "EX203     ",
+          "mktnote": "ETH-USDT",
+          "orderstamp": "OR6728455                           ",
+          "userlink": "U583322                             ",
+          "ordertune": "Stop",
+          "dealedge": "Sell",
+          "dealquote": "27080.390",
+          "dealcount": "1.9930",
+          "notionsum": "53970.000",
+          "orderflow": "New",
+          "timespan": "IOC",
+          "orderbase": "API",
+          "clientmark": "CL5311016",
+          "createspot": "2025-02-18 09:54:51.049442",
+          "updatespot": "2025-02-19 08:29:46.049442"
+        },
+        {
+          "orderspivot": 2,
+          "recordvault": "OB798737                            ",
+          "timecode": "2025-02-19 08:29:46.049442",
+          "exchspot": "EX506     ",
+          "mktnote": "ADA-USDC",
+          "orderstamp": "OR9929123                           ",
+          "userlink": "U810391                             ",
+          "ordertune": "Market",
+          "dealedge": "Sell",
+          "dealquote": "10075.880",
+          "dealcount": "8.0410",
+          "notionsum": "81019.900",
+          "orderflow": "PartiallyFilled",
+          "timespan": "GTC",
+          "orderbase": "Web",
+          "clientmark": "CL4886815",
+          "createspot": "2025-02-18 19:01:42.049442",
+          "updatespot": "2025-02-19 08:29:46.049442"
+        },
+        {
+          "orderspivot": 3,
+          "recordvault": "OB179652                            ",
+          "timecode": "2025-02-19 08:29:46.049442",
+          "exchspot": "EX497     ",
+          "mktnote": "BTC-USDT",
+          "orderstamp": "OR8906157                           ",
+          "userlink": "U485932                             ",
+          "ordertune": "Limit",
+          "dealedge": "Sell",
+          "dealquote": "10665.390",
+          "dealcount": "7.9757",
+          "notionsum": "85064.150",
+          "orderflow": "Cancelled",
+          "timespan": "GTD",
+          "orderbase": "Mobile",
+          "clientmark": "CL8161496",
+          "createspot": "2025-02-18 20:34:55.049442",
+          "updatespot": "2025-02-19 08:29:46.049442"
+        },
+        {
+          "orderspivot": 4,
+          "recordvault": "OB827275                            ",
+          "timecode": "2025-02-19 08:29:46.049442",
+          "exchspot": "EX409     ",
+          "mktnote": "SOL-USDC",
+          "orderstamp": "OR8380342                           ",
+          "userlink": "U342072                             ",
+          "ordertune": "Limit",
+          "dealedge": "Sell",
+          "dealquote": "37386.340",
+          "dealcount": "7.5173",
+          "notionsum": "281044.710",
+          "orderflow": "Filled",
+          "timespan": "GTD",
+          "orderbase": "Web",
+          "clientmark": "CL1708462",
+          "createspot": "2025-02-18 15:19:12.049442",
+          "updatespot": "2025-02-19 08:29:46.049442"
+        },
+        {
+          "orderspivot": 5,
+          "recordvault": "OB736523                            ",
+          "timecode": "2025-02-19 08:29:46.049442",
+          "exchspot": "EX702     ",
+          "mktnote": "ETH-USDC",
+          "orderstamp": "OR1468420                           ",
+          "userlink": "U575806                             ",
+          "ordertune": "Stop",
+          "dealedge": "Sell",
+          "dealquote": "47774.900",
+          "dealcount": "3.0475",
+          "notionsum": "145594.010",
+          "orderflow": "PartiallyFilled",
+          "timespan": "GTC",
+          "orderbase": "Mobile",
+          "clientmark": "CL3906138",
+          "createspot": "2025-02-19 01:48:24.049442",
+          "updatespot": "2025-02-19 08:29:46.049442"
+        },
+        {
+          "orderspivot": 6,
+          "recordvault": "OB575491                            ",
+          "timecode": "2025-02-19 08:29:46.049442",
+          "exchspot": "EX541     ",
+          "mktnote": "BTC-USD",
+          "orderstamp": "OR2127539                           ",
+          "userlink": "U388201                             ",
+          "ordertune": "Limit",
+          "dealedge": "Sell",
+          "dealquote": "23821.660",
+          "dealcount": "6.2157",
+          "notionsum": "148067.790",
+          "orderflow": "Cancelled",
+          "timespan": "IOC",
+          "orderbase": "API",
+          "clientmark": "CL8329972",
+          "createspot": "2025-02-19 06:47:50.049442",
+          "updatespot": "2025-02-19 08:29:46.049442"
+        },
+        {
+          "orderspivot": 7,
+          "recordvault": "OB892943                            ",
+          "timecode": "2025-02-19 08:29:46.049442",
+          "exchspot": "EX283     ",
+          "mktnote": "SOL-USDC",
+          "orderstamp": "OR2356404                           ",
+          "userlink": "U451997                             ",
+          "ordertune": "StopLimit",
+          "dealedge": "Buy",
+          "dealquote": "30298.700",
+          "dealcount": "0.8177",
+          "notionsum": "24774.160",
+          "orderflow": "PartiallyFilled",
+          "timespan": "FOK",
+          "orderbase": "API",
+          "clientmark": "CL6137981",
+          "createspot": "2025-02-19 05:03:23.049442",
+          "updatespot": "2025-02-19 08:29:46.049442"
+        },
+        {
+          "orderspivot": 8,
+          "recordvault": "OB824478                            ",
+          "timecode": "2025-02-19 08:29:46.049442",
+          "exchspot": "EX127     ",
+          "mktnote": "ADA-USDC",
+          "orderstamp": "OR7439579                           ",
+          "userlink": "U911816                             ",
+          "ordertune": "Market",
+          "dealedge": "Buy",
+          "dealquote": "13163.350",
+          "dealcount": "6.2723",
+          "notionsum": "82565.010",
+          "orderflow": "PartiallyFilled",
+          "timespan": "GTD",
+          "orderbase": "Mobile",
+          "clientmark": "CL3366161",
+          "createspot": "2025-02-18 15:24:57.049442",
+          "updatespot": "2025-02-19 08:29:46.049442"
+        }
+      ],
+      "pii_columns_masked": []
+    },
+    {
+      "table_name": "accountbalances",
+      "columns": [
+        {
+          "name": "accountbalancesnode",
+          "type": "BIGINT",
+          "nullable": false,
+          "is_primary_key": true,
+          "foreign_key": null
+        },
+        {
+          "name": "walletsum",
+          "type": "NUMERIC(12, 3)",
+          "nullable": true,
+          "is_primary_key": false,
+          "foreign_key": null
+        },
+        {
+          "name": "availsum",
+          "type": "NUMERIC(12, 3)",
+          "nullable": true,
+          "is_primary_key": false,
+          "foreign_key": null
+        },
+        {
+          "name": "frozensum",
+          "type": "NUMERIC(12, 3)",
+          "nullable": true,
+          "is_primary_key": false,
+          "foreign_key": null
+        },
+        {
+          "name": "margsum",
+          "type": "NUMERIC(12, 3)",
+          "nullable": true,
+          "is_primary_key": false,
+          "foreign_key": null
+        },
+        {
+          "name": "unrealline",
+          "type": "DOUBLE PRECISION",
+          "nullable": true,
+          "is_primary_key": false,
+          "foreign_key": null
+        },
+        {
+          "name": "realline",
+          "type": "DOUBLE PRECISION",
+          "nullable": true,
+          "is_primary_key": false,
+          "foreign_key": null
+        },
+        {
+          "name": "usertag",
+          "type": "CHAR(36)",
+          "nullable": true,
+          "is_primary_key": false,
+          "foreign_key": "users.userstamp"
+        }
+      ],
+      "sample_rows": [
+        {
+          "accountbalancesnode": 1,
+          "walletsum": "316482.990",
+          "availsum": "250957.880",
+          "frozensum": "65525.110",
+          "margsum": "901343.580",
+          "unrealline": 3545.06,
+          "realline": -38455.08,
+          "usertag": "U583322                             "
+        },
+        {
+          "accountbalancesnode": 2,
+          "walletsum": "506236.340",
+          "availsum": "91692.590",
+          "frozensum": "414543.750",
+          "margsum": "572884.270",
+          "unrealline": 52010.17,
+          "realline": 9741.09,
+          "usertag": "U810391                             "
+        },
+        {
+          "accountbalancesnode": 3,
+          "walletsum": "729963.070",
+          "availsum": "545562.960",
+          "frozensum": "184400.110",
+          "margsum": "321804.170",
+          "unrealline": 52597.58,
+          "realline": -81686.56,
+          "usertag": "U485932                             "
+        },
+        {
+          "accountbalancesnode": 4,
+          "walletsum": "775860.500",
+          "availsum": "537653.800",
+          "frozensum": "238206.700",
+          "margsum": "204380.240",
+          "unrealline": -39405.67,
+          "realline": -89763.0,
+          "usertag": "U342072                             "
+        },
+        {
+          "accountbalancesnode": 5,
+          "walletsum": "152867.630",
+          "availsum": "75485.030",
+          "frozensum": "77382.600",
+          "margsum": "375823.340",
+          "unrealline": 52702.64,
+          "realline": 87763.67,
+          "usertag": "U575806                             "
+        },
+        {
+          "accountbalancesnode": 6,
+          "walletsum": "870948.350",
+          "availsum": "778158.270",
+          "frozensum": "92790.080",
+          "margsum": "811884.920",
+          "unrealline": 23445.23,
+          "realline": -82973.05,
+          "usertag": "U388201                             "
+        },
+        {
+          "accountbalancesnode": 7,
+          "walletsum": "819249.150",
+          "availsum": "758521.090",
+          "frozensum": "60728.060",
+          "margsum": "196856.440",
+          "unrealline": -95286.74,
+          "realline": -81244.39,
+          "usertag": "U451997                             "
+        },
+        {
+          "accountbalancesnode": 8,
+          "walletsum": "886018.730",
+          "availsum": "289546.650",
+          "frozensum": "596472.080",
+          "margsum": "525237.000",
+          "unrealline": -3984.72,
+          "realline": 44912.59,
+          "usertag": "U911816                             "
+        }
+      ],
+      "pii_columns_masked": []
+    },
+    {
+      "table_name": "orderexecutions",
+      "columns": [
+        {
+          "name": "orderexecmark",
+          "type": "BIGINT",
+          "nullable": false,
+          "is_primary_key": true,
+          "foreign_key": null
+        },
+        {
+          "name": "fillcount",
+          "type": "NUMERIC(8, 4)",
+          "nullable": true,
+          "is_primary_key": false,
+          "foreign_key": null
+        },
+        {
+          "name": "remaincount",
+          "type": "NUMERIC(8, 4)",
+          "nullable": true,
+          "is_primary_key": false,
+          "foreign_key": null
+        },
+        {
+          "name": "fillquote",
+          "type": "NUMERIC(12, 3)",
+          "nullable": true,
+          "is_primary_key": false,
+          "foreign_key": null
+        },
+        {
+          "name": "fillsum",
+          "type": "NUMERIC(12, 3)",
+          "nullable": true,
+          "is_primary_key": false,
+          "foreign_key": null
+        },
+        {
+          "name": "expirespot",
+          "type": "TIMESTAMP",
+          "nullable": true,
+          "is_primary_key": false,
+          "foreign_key": null
+        },
+        {
+          "name": "cancelnote",
+          "type": "VARCHAR(17)",
+          "nullable": true,
+          "is_primary_key": false,
+          "foreign_key": null
+        },
+        {
+          "name": "exectune",
+          "type": "VARCHAR(5)",
+          "nullable": true,
+          "is_primary_key": false,
+          "foreign_key": null
+        },
+        {
+          "name": "ordersmark",
+          "type": "CHAR(36)",
+          "nullable": true,
+          "is_primary_key": false,
+          "foreign_key": "orders.recordvault"
+        }
+      ],
+      "sample_rows": [
+        {
+          "orderexecmark": 1,
+          "fillcount": "1.4479",
+          "remaincount": "0.5450",
+          "fillquote": "26244.440",
+          "fillsum": "38000.140",
+          "expirespot": "2025-02-22 08:29:46.049442",
+          "cancelnote": "Expired",
+          "exectune": null,
+          "ordersmark": "OB333576                            "
+        },
+        {
+          "orderexecmark": 2,
+          "fillcount": "2.0981",
+          "remaincount": "5.9428",
+          "fillquote": "10230.140",
+          "fillsum": "21464.330",
+          "expirespot": "2025-02-26 08:29:46.049442",
+          "cancelnote": null,
+          "exectune": null,
+          "ordersmark": "OB798737                            "
+        },
+        {
+          "orderexecmark": 3,
+          "fillcount": "3.5880",
+          "remaincount": "4.3877",
+          "fillquote": "10911.710",
+          "fillsum": "39151.480",
+          "expirespot": "2025-03-19 08:29:46.049442",
+          "cancelnote": "InsufficientFunds",
+          "exectune": null,
+          "ordersmark": "OB179652                            "
+        },
+        {
+          "orderexecmark": 4,
+          "fillcount": "6.0820",
+          "remaincount": "1.4353",
+          "fillquote": "37367.160",
+          "fillsum": "227266.280",
+          "expirespot": "2025-03-07 08:29:46.049442",
+          "cancelnote": "UserRequested",
+          "exectune": "Maker",
+          "ordersmark": "OB827275                            "
+        },
+        {
+          "orderexecmark": 5,
+          "fillcount": "0.9848",
+          "remaincount": "2.0627",
+          "fillquote": "45791.280",
+          "fillsum": "45095.020",
+          "expirespot": "2025-02-26 08:29:46.049442",
+          "cancelnote": null,
+          "exectune": "Taker",
+          "ordersmark": "OB736523                            "
+        },
+        {
+          "orderexecmark": 6,
+          "fillcount": "5.5570",
+          "remaincount": "0.6586",
+          "fillquote": "24437.450",
+          "fillsum": "135799.670",
+          "expirespot": "2025-03-17 08:29:46.049442",
+          "cancelnote": "Expired",
+          "exectune": null,
+          "ordersmark": "OB575491                            "
+        },
+        {
+          "orderexecmark": 7,
+          "fillcount": "0.5551",
+          "remaincount": "0.2626",
+          "fillquote": "29088.070",
+          "fillsum": "16146.180",
+          "expirespot": "2025-03-17 08:29:46.049442",
+          "cancelnote": null,
+          "exectune": "Maker",
+          "ordersmark": "OB892943                            "
+        },
+        {
+          "orderexecmark": 8,
+          "fillcount": "5.4679",
+          "remaincount": "0.8044",
+          "fillquote": "13100.260",
+          "fillsum": "71631.370",
+          "expirespot": "2025-02-22 08:29:46.049442",
+          "cancelnote": "UserRequested",
+          "exectune": "Taker",
+          "ordersmark": "OB824478                            "
+        }
+      ],
+      "pii_columns_masked": []
+    },
+    {
+      "table_name": "systemmonitoring",
+      "columns": [
+        {
+          "name": "systemmonitoringpivot",
+          "type": "BIGINT",
+          "nullable": false,
+          "is_primary_key": true,
+          "foreign_key": null
+        },
+        {
+          "name": "apireqtotal",
+          "type": "INTEGER",
+          "nullable": true,
+          "is_primary_key": false,
+          "foreign_key": null
+        },
+        {
+          "name": "apierrtotal",
+          "type": "INTEGER",
+          "nullable": true,
+          "is_primary_key": false,
+          "foreign_key": null
+        },
+        {
+          "name": "apilatmark",
+          "type": "REAL",
+          "nullable": true,
+          "is_primary_key": false,
+          "foreign_key": null
+        },
+        {
+          "name": "wsstate",
+          "type": "VARCHAR(12)",
+          "nullable": true,
+          "is_primary_key": false,
+          "foreign_key": null
+        },
+        {
+          "name": "rateremain",
+          "type": "SMALLINT",
+          "nullable": true,
+          "is_primary_key": false,
+          "foreign_key": null
+        },
+        {
+          "name": "lastupdnote",
+          "type": "VARCHAR(60)",
+          "nullable": true,
+          "is_primary_key": false,
+          "foreign_key": null
+        },
+        {
+          "name": "seqcode",
+          "type": "VARCHAR(60)",
+          "nullable": true,
+          "is_primary_key": false,
+          "foreign_key": null
+        },
+        {
+          "name": "slipratio",
+          "type": "NUMERIC(12, 3)",
+          "nullable": true,
+          "is_primary_key": false,
+          "foreign_key": null
+        },
+        {
+          "name": "exectimespan",
+          "type": "NUMERIC(8, 2)",
+          "nullable": true,
+          "is_primary_key": false,
+          "foreign_key": null
+        },
+        {
+          "name": "queueline",
+          "type": "INTEGER",
+          "nullable": true,
+          "is_primary_key": false,
+          "foreign_key": null
+        },
+        {
+          "name": "mkteffect",
+          "type": "REAL",
+          "nullable": true,
+          "is_primary_key": false,
+          "foreign_key": null
+        },
+        {
+          "name": "priceeffect",
+          "type": "REAL",
+          "nullable": true,
+          "is_primary_key": false,
+          "foreign_key": null
+        },
+        {
+          "name": "aitrack",
+          "type": "BIGINT",
+          "nullable": true,
+          "is_primary_key": false,
+          "foreign_key": "analyticsindicators.analyticsindicatorsnode"
+        }
+      ],
+      "sample_rows": [
+        {
+          "systemmonitoringpivot": 1,
+          "apireqtotal": 2984,
+          "apierrtotal": 4,
+          "apilatmark": "[MASKED]",
+          "wsstate": "Connected",
+          "rateremain": 939,
+          "lastupdnote": "9340653",
+          "seqcode": "6559236",
+          "slipratio": "-0.008",
+          "exectimespan": "203.00",
+          "queueline": 810,
+          "mkteffect": 0.0014,
+          "priceeffect": 0.0039,
+          "aitrack": 1
+        },
+        {
+          "systemmonitoringpivot": 2,
+          "apireqtotal": 7728,
+          "apierrtotal": 48,
+          "apilatmark": "[MASKED]",
+          "wsstate": "Connected",
+          "rateremain": 408,
+          "lastupdnote": "1943398",
+          "seqcode": "5033445",
+          "slipratio": "0.005",
+          "exectimespan": "216.00",
+          "queueline": 985,
+          "mkteffect": -0.0074,
+          "priceeffect": 0.0011,
+          "aitrack": 2
+        },
+        {
+          "systemmonitoringpivot": 3,
+          "apireqtotal": 5759,
+          "apierrtotal": 41,
+          "apilatmark": "[MASKED]",
+          "wsstate": "Disconnected",
+          "rateremain": 981,
+          "lastupdnote": "5199723",
+          "seqcode": "8934815",
+          "slipratio": "0.003",
+          "exectimespan": "431.00",
+          "queueline": 649,
+          "mkteffect": -0.0046,
+          "priceeffect": 0.0037,
+          "aitrack": 3
+        },
+        {
+          "systemmonitoringpivot": 4,
+          "apireqtotal": 132,
+          "apierrtotal": 65,
+          "apilatmark": "[MASKED]",
+          "wsstate": "Disconnected",
+          "rateremain": 453,
+          "lastupdnote": "9988341",
+          "seqcode": "8496843",
+          "slipratio": "0.004",
+          "exectimespan": "564.00",
+          "queueline": 796,
+          "mkteffect": 0.0005,
+          "priceeffect": 0.0007,
+          "aitrack": 4
+        },
+        {
+          "systemmonitoringpivot": 5,
+          "apireqtotal": 8180,
+          "apierrtotal": 1,
+          "apilatmark": "[MASKED]",
+          "wsstate": "Disconnected",
+          "rateremain": 867,
+          "lastupdnote": "5443901",
+          "seqcode": "3825955",
+          "slipratio": "-0.005",
+          "exectimespan": "786.00",
+          "queueline": 411,
+          "mkteffect": -0.0095,
+          "priceeffect": 0.0044,
+          "aitrack": 5
+        },
+        {
+          "systemmonitoringpivot": 6,
+          "apireqtotal": 5569,
+          "apierrtotal": 55,
+          "apilatmark": "[MASKED]",
+          "wsstate": "Connected",
+          "rateremain": 938,
+          "lastupdnote": "1737537",
+          "seqcode": "3884002",
+          "slipratio": "-0.003",
+          "exectimespan": "450.00",
+          "queueline": 423,
+          "mkteffect": -0.0054,
+          "priceeffect": 0.0077,
+          "aitrack": 6
+        },
+        {
+          "systemmonitoringpivot": 7,
+          "apireqtotal": 7529,
+          "apierrtotal": 53,
+          "apilatmark": "[MASKED]",
+          "wsstate": "Connected",
+          "rateremain": 875,
+          "lastupdnote": "2602475",
+          "seqcode": "5627461",
+          "slipratio": "0.006",
+          "exectimespan": "694.00",
+          "queueline": 322,
+          "mkteffect": -0.0021,
+          "priceeffect": 0.0089,
+          "aitrack": 7
+        },
+        {
+          "systemmonitoringpivot": 8,
+          "apireqtotal": 1706,
+          "apierrtotal": 93,
+          "apilatmark": "[MASKED]",
+          "wsstate": "Connected",
+          "rateremain": 679,
+          "lastupdnote": "3978770",
+          "seqcode": "9627536",
+          "slipratio": "-0.008",
+          "exectimespan": "990.00",
+          "queueline": 88,
+          "mkteffect": -0.0049,
+          "priceeffect": 0.0017,
+          "aitrack": 8
+        }
+      ],
+      "pii_columns_masked": [
+        "apilatmark"
+      ]
+    },
+    {
+      "table_name": "fees",
+      "columns": [
+        {
+          "name": "feesnode",
+          "type": "BIGINT",
+          "nullable": false,
+          "is_primary_key": true,
+          "foreign_key": null
+        },
+        {
+          "name": "feerange",
+          "type": "VARCHAR(5)",
+          "nullable": true,
+          "is_primary_key": false,
+          "foreign_key": null
+        },
+        {
+          "name": "feerate",
+          "type": "NUMERIC(8, 5)",
+          "nullable": true,
+          "is_primary_key": false,
+          "foreign_key": null
+        },
+        {
+          "name": "feetotal",
+          "type": "NUMERIC(12, 6)",
+          "nullable": true,
+          "is_primary_key": false,
+          "foreign_key": null
+        },
+        {
+          "name": "feecoin",
+          "type": "VARCHAR(4)",
+          "nullable": true,
+          "is_primary_key": false,
+          "foreign_key": null
+        },
+        {
+          "name": "rebrate",
+          "type": "NUMERIC(8, 5)",
+          "nullable": true,
+          "is_primary_key": false,
+          "foreign_key": null
+        },
+        {
+          "name": "rebtotal",
+          "type": "NUMERIC(12, 6)",
+          "nullable": true,
+          "is_primary_key": false,
+          "foreign_key": null
+        },
+        {
+          "name": "orderslink",
+          "type": "CHAR(36)",
+          "nullable": true,
+          "is_primary_key": false,
+          "foreign_key": "orders.recordvault"
+        }
+      ],
+      "sample_rows": [
+        {
+          "feesnode": 1,
+          "feerange": "Tier4",
+          "feerate": "0.00070",
+          "feetotal": "26.600098",
+          "feecoin": "USDC",
+          "rebrate": "0.00090",
+          "rebtotal": "34.200126",
+          "orderslink": "OB333576                            "
+        },
+        {
+          "feesnode": 2,
+          "feerange": "Tier1",
+          "feerate": "0.00150",
+          "feetotal": "32.196495",
+          "feecoin": "USDC",
+          "rebrate": "0.00030",
+          "rebtotal": "6.439299",
+          "orderslink": "OB798737                            "
+        },
+        {
+          "feesnode": 3,
+          "feerange": "Tier3",
+          "feerate": "0.00170",
+          "feetotal": "66.557516",
+          "feecoin": "USD",
+          "rebrate": "0.00030",
+          "rebtotal": "11.745444",
+          "orderslink": "OB179652                            "
+        },
+        {
+          "feesnode": 4,
+          "feerange": "Tier4",
+          "feerate": "0.00060",
+          "feetotal": "136.359768",
+          "feecoin": "USDT",
+          "rebrate": "0.00060",
+          "rebtotal": "136.359768",
+          "orderslink": "OB827275                            "
+        },
+        {
+          "feesnode": 5,
+          "feerange": "Tier2",
+          "feerate": "0.00050",
+          "feetotal": "22.547510",
+          "feecoin": "USDC",
+          "rebrate": "0.00080",
+          "rebtotal": "36.076016",
+          "orderslink": "OB736523                            "
+        },
+        {
+          "feesnode": 6,
+          "feerange": "Tier3",
+          "feerate": "0.00050",
+          "feetotal": "67.899835",
+          "feecoin": "USD",
+          "rebrate": "0.00080",
+          "rebtotal": "108.639736",
+          "orderslink": "OB575491                            "
+        },
+        {
+          "feesnode": 7,
+          "feerange": "Tier2",
+          "feerate": "0.00100",
+          "feetotal": "16.146180",
+          "feecoin": "USDC",
+          "rebrate": "0.00080",
+          "rebtotal": "12.916944",
+          "orderslink": "OB892943                            "
+        },
+        {
+          "feesnode": 8,
+          "feerange": "Tier1",
+          "feerate": "0.00090",
+          "feetotal": "64.468233",
+          "feecoin": "USDC",
+          "rebrate": "0.00000",
+          "rebtotal": "0.000000",
+          "orderslink": "OB824478                            "
+        }
+      ],
+      "pii_columns_masked": []
+    },
+    {
+      "table_name": "marketstats",
+      "columns": [
+        {
+          "name": "marketstatsmark",
+          "type": "BIGINT",
+          "nullable": false,
+          "is_primary_key": true,
+          "foreign_key": null
+        },
+        {
+          "name": "fundrate",
+          "type": "NUMERIC(6, 4)",
+          "nullable": true,
+          "is_primary_key": false,
+          "foreign_key": null
+        },
+        {
+          "name": "fundspot",
+          "type": "TIMESTAMP",
+          "nullable": true,
+          "is_primary_key": false,
+          "foreign_key": null
+        },
+        {
+          "name": "openstake",
+          "type": "NUMERIC(15, 5)",
+          "nullable": true,
+          "is_primary_key": false,
+          "foreign_key": null
+        },
+        {
+          "name": "volday",
+          "type": "DOUBLE PRECISION",
+          "nullable": true,
+          "is_primary_key": false,
+          "foreign_key": null
+        },
+        {
+          "name": "tradeday",
+          "type": "INTEGER",
+          "nullable": true,
+          "is_primary_key": false,
+          "foreign_key": null
+        },
+        {
+          "name": "tnoverday",
+          "type": "NUMERIC(12, 3)",
+          "nullable": true,
+          "is_primary_key": false,
+          "foreign_key": null
+        },
+        {
+          "name": "priceshiftday",
+          "type": "NUMERIC(12, 3)",
+          "nullable": true,
+          "is_primary_key": false,
+          "foreign_key": null
+        },
+        {
+          "name": "highspotday",
+          "type": "NUMERIC(12, 3)",
+          "nullable": true,
+          "is_primary_key": false,
+          "foreign_key": null
+        },
+        {
+          "name": "lowspotday",
+          "type": "NUMERIC(12, 3)",
+          "nullable": true,
+          "is_primary_key": false,
+          "foreign_key": null
+        },
+        {
+          "name": "vwapday",
+          "type": "NUMERIC(12, 3)",
+          "nullable": true,
+          "is_primary_key": false,
+          "foreign_key": null
+        },
+        {
+          "name": "mktsize",
+          "type": "NUMERIC(13, 3)",
+          "nullable": true,
+          "is_primary_key": false,
+          "foreign_key": null
+        },
+        {
+          "name": "circtotal",
+          "type": "NUMERIC(13, 3)",
+          "nullable": true,
+          "is_primary_key": false,
+          "foreign_key": null
+        },
+        {
+          "name": "totsupply",
+          "type": "NUMERIC(13, 3)",
+          "nullable": true,
+          "is_primary_key": false,
+          "foreign_key": null
+        },
+        {
+          "name": "maxsupply",
+          "type": "NUMERIC(13, 3)",
+          "nullable": true,
+          "is_primary_key": false,
+          "foreign_key": null
+        },
+        {
+          "name": "mkthold",
+          "type": "NUMERIC(13, 3)",
+          "nullable": true,
+          "is_primary_key": false,
+          "foreign_key": null
+        },
+        {
+          "name": "traderank",
+          "type": "INTEGER",
+          "nullable": true,
+          "is_primary_key": false,
+          "foreign_key": null
+        },
+        {
+          "name": "liquidscore",
+          "type": "NUMERIC(8, 2)",
+          "nullable": true,
+          "is_primary_key": false,
+          "foreign_key": null
+        },
+        {
+          "name": "volmeter",
+          "type": "NUMERIC(8, 2)",
+          "nullable": true,
+          "is_primary_key": false,
+          "foreign_key": null
+        },
+        {
+          "name": "mdlink",
+          "type": "BIGINT",
+          "nullable": true,
+          "is_primary_key": false,
+          "foreign_key": "marketdata.marketdatanode"
+        }
+      ],
+      "sample_rows": [
+        {
+          "marketstatsmark": 1,
+          "fundrate": "0.0004",
+          "fundspot": "2025-02-19 14:29:46",
+          "openstake": "808922.74000",
+          "volday": 3045613.27,
+          "tradeday": 73628,
+          "tnoverday": "9406054.280",
+          "priceshiftday": "0.080",
+          "highspotday": "27823.670",
+          "lowspotday": "25912.080",
+          "vwapday": "26269.450",
+          "mktsize": "438986638.670",
+          "circtotal": "79417014.510",
+          "totsupply": "96226091.910",
+          "maxsupply": "188391541.040",
+          "mkthold": "0.026",
+          "traderank": 52,
+          "liquidscore": "0.90",
+          "volmeter": "55.65",
+          "mdlink": 1
+        },
+        {
+          "marketstatsmark": 2,
+          "fundrate": "0.0010",
+          "fundspot": "2025-02-19 09:29:46",
+          "openstake": "809953.60000",
+          "volday": 7633418.69,
+          "tradeday": 96633,
+          "tnoverday": "7837475.610",
+          "priceshiftday": "-0.137",
+          "highspotday": "10741.860",
+          "lowspotday": "9151.160",
+          "vwapday": "9857.690",
+          "mktsize": "933923095.270",
+          "circtotal": "49545947.870",
+          "totsupply": "61332400.540",
+          "maxsupply": "67917061.740",
+          "mkthold": "0.311",
+          "traderank": 76,
+          "liquidscore": "0.83",
+          "volmeter": "96.53",
+          "mdlink": 2
+        },
+        {
+          "marketstatsmark": 3,
+          "fundrate": "-0.0001",
+          "fundspot": "2025-02-19 12:29:46",
+          "openstake": "508322.66000",
+          "volday": 8590839.84,
+          "tradeday": 16878,
+          "tnoverday": "3696795.960",
+          "priceshiftday": "0.147",
+          "highspotday": "11080.100",
+          "lowspotday": "10040.800",
+          "vwapday": "11107.160",
+          "mktsize": "962118981.670",
+          "circtotal": "78894784.650",
+          "totsupply": "83071569.320",
+          "maxsupply": "110069663.400",
+          "mkthold": "0.404",
+          "traderank": 29,
+          "liquidscore": "0.92",
+          "volmeter": "36.88",
+          "mdlink": 3
+        },
+        {
+          "marketstatsmark": 4,
+          "fundrate": "0.0003",
+          "fundspot": "2025-02-19 11:29:46",
+          "openstake": "253993.32000",
+          "volday": 9609874.55,
+          "tradeday": 87712,
+          "tnoverday": "7313084.930",
+          "priceshiftday": "0.004",
+          "highspotday": "38431.560",
+          "lowspotday": "34195.600",
+          "vwapday": "36951.790",
+          "mktsize": "492406158.220",
+          "circtotal": "76718270.870",
+          "totsupply": "112045057.270",
+          "maxsupply": "154744857.850",
+          "mkthold": "0.453",
+          "traderank": 27,
+          "liquidscore": "0.05",
+          "volmeter": "83.55",
+          "mdlink": 4
+        },
+        {
+          "marketstatsmark": 5,
+          "fundrate": "-0.0003",
+          "fundspot": "2025-02-19 09:29:46",
+          "openstake": "870600.38000",
+          "volday": 2785446.35,
+          "tradeday": 28764,
+          "tnoverday": "3736992.320",
+          "priceshiftday": "-0.142",
+          "highspotday": "49593.140",
+          "lowspotday": "46870.460",
+          "vwapday": "49217.130",
+          "mktsize": "14615603.530",
+          "circtotal": "6539225.590",
+          "totsupply": "6992048.720",
+          "maxsupply": "12645734.750",
+          "mkthold": "0.095",
+          "traderank": 89,
+          "liquidscore": "0.24",
+          "volmeter": "81.94",
+          "mdlink": 5
+        },
+        {
+          "marketstatsmark": 6,
+          "fundrate": "-0.0008",
+          "fundspot": "2025-02-19 13:29:46",
+          "openstake": "674669.10000",
+          "volday": 1258728.52,
+          "tradeday": 16808,
+          "tnoverday": "1521136.890",
+          "priceshiftday": "-0.074",
+          "highspotday": "26186.060",
+          "lowspotday": "22728.850",
+          "vwapday": "22663.370",
+          "mktsize": "117315053.130",
+          "circtotal": "23575607.360",
+          "totsupply": "46150098.220",
+          "maxsupply": "78824343.940",
+          "mkthold": "0.319",
+          "traderank": 71,
+          "liquidscore": "0.22",
+          "volmeter": "6.85",
+          "mdlink": 6
+        },
+        {
+          "marketstatsmark": 7,
+          "fundrate": "0.0009",
+          "fundspot": "2025-02-19 11:29:46",
+          "openstake": "950048.21000",
+          "volday": 4565218.57,
+          "tradeday": 39420,
+          "tnoverday": "2707134.240",
+          "priceshiftday": "0.074",
+          "highspotday": "31560.020",
+          "lowspotday": "28839.400",
+          "vwapday": "31312.620",
+          "mktsize": "264064267.390",
+          "circtotal": "54027599.050",
+          "totsupply": "57309392.320",
+          "maxsupply": "72460405.490",
+          "mkthold": "0.385",
+          "traderank": 22,
+          "liquidscore": "0.02",
+          "volmeter": "53.54",
+          "mdlink": 7
+        },
+        {
+          "marketstatsmark": 8,
+          "fundrate": "-0.0008",
+          "fundspot": "2025-02-19 16:29:46",
+          "openstake": "465926.27000",
+          "volday": 8072875.25,
+          "tradeday": 96280,
+          "tnoverday": "3289058.990",
+          "priceshiftday": "-0.146",
+          "highspotday": "14229.740",
+          "lowspotday": "12968.390",
+          "vwapday": "12788.160",
+          "mktsize": "89190379.080",
+          "circtotal": "4468870.410",
+          "totsupply": "8541383.310",
+          "maxsupply": "11246126.760",
+          "mkthold": "0.326",
+          "traderank": 17,
+          "liquidscore": "0.47",
+          "volmeter": "53.56",
+          "mdlink": 8
+        }
+      ],
+      "pii_columns_masked": []
+    },
+    {
+      "table_name": "marketdata",
+      "columns": [
+        {
+          "name": "marketdatanode",
+          "type": "BIGINT",
+          "nullable": false,
+          "is_primary_key": true,
+          "foreign_key": null
+        },
+        {
+          "name": "quote_depth_snapshot",
+          "type": "JSONB",
+          "nullable": true,
+          "is_primary_key": false,
+          "foreign_key": null
+        }
+      ],
+      "sample_rows": [
+        {
+          "marketdatanode": 3,
+          "quote_depth_snapshot": {
+            "depth": {
+              "askdepth": 124,
+              "askunits": 88.5548,
+              "biddepth": 370,
+              "bidunits": 32.7479
+            },
+            "quotes": {
+              "askquote": 10670.09,
+              "bidquote": 10660.45,
+              "midquote": 10665.27,
+              "markquote": 10659.73,
+              "indexquote": 10670.97
+            },
+            "spread": {
+              "spreadband": 9.64,
+              "spreadrate": 0.0904
+            },
+            "metadata": {
+              "exchnote": "EX497     ",
+              "mktcombo": "BTC-USDT",
+              "timetrack": "2025-02-19T08:29:46.049442"
+            }
+          }
+        },
+        {
+          "marketdatanode": 4,
+          "quote_depth_snapshot": {
+            "depth": {
+              "askdepth": 69,
+              "askunits": 95.6982,
+              "biddepth": 808,
+              "bidunits": 82.0956
+            },
+            "quotes": {
+              "askquote": 37394.15,
+              "bidquote": 37376.59,
+              "midquote": 37385.37,
+              "markquote": 37399.08,
+              "indexquote": 37371.31
+            },
+            "spread": {
+              "spreadband": 17.56,
+              "spreadrate": 0.047
+            },
+            "metadata": {
+              "exchnote": "EX409     ",
+              "mktcombo": "SOL-USDC",
+              "timetrack": "2025-02-19T08:29:46.049442"
+            }
+          }
+        },
+        {
+          "marketdatanode": 5,
+          "quote_depth_snapshot": {
+            "depth": {
+              "askdepth": 184,
+              "askunits": 63.6802,
+              "biddepth": 567,
+              "bidunits": 23.2098
+            },
+            "quotes": {
+              "askquote": 47805.68,
+              "bidquote": 47734.18,
+              "midquote": 47769.93,
+              "markquote": 47789.71,
+              "indexquote": 47814.95
+            },
+            "spread": {
+              "spreadband": 71.5,
+              "spreadrate": 0.1497
+            },
+            "metadata": {
+              "exchnote": "EX702     ",
+              "mktcombo": "ETH-USDC",
+              "timetrack": "2025-02-19T08:29:46.049442"
+            }
+          }
+        },
+        {
+          "marketdatanode": 6,
+          "quote_depth_snapshot": {
+            "depth": {
+              "askdepth": 553,
+              "askunits": 39.2658,
+              "biddepth": 603,
+              "bidunits": 56.3464
+            },
+            "quotes": {
+              "askquote": 23830.82,
+              "bidquote": 23804.19,
+              "midquote": 23817.5,
+              "markquote": 23834.02,
+              "indexquote": 23827.76
+            },
+            "spread": {
+              "spreadband": 26.63,
+              "spreadrate": 0.1118
+            },
+            "metadata": {
+              "exchnote": "EX541     ",
+              "mktcombo": "BTC-USD",
+              "timetrack": "2025-02-19T08:29:46.049442"
+            }
+          }
+        },
+        {
+          "marketdatanode": 7,
+          "quote_depth_snapshot": {
+            "depth": {
+              "askdepth": 133,
+              "askunits": 51.9634,
+              "biddepth": 171,
+              "bidunits": 22.6696
+            },
+            "quotes": {
+              "askquote": 30300.88,
+              "bidquote": 30279.14,
+              "midquote": 30290.01,
+              "markquote": 30302.21,
+              "indexquote": 30268.46
+            },
+            "spread": {
+              "spreadband": 21.74,
+              "spreadrate": 0.0718
+            },
+            "metadata": {
+              "exchnote": "EX283     ",
+              "mktcombo": "SOL-USDC",
+              "timetrack": "2025-02-19T08:29:46.049442"
+            }
+          }
+        },
+        {
+          "marketdatanode": 8,
+          "quote_depth_snapshot": {
+            "depth": {
+              "askdepth": 538,
+              "askunits": 37.8045,
+              "biddepth": 336,
+              "bidunits": 59.1078
+            },
+            "quotes": {
+              "askquote": 13163.39,
+              "bidquote": 13160.7,
+              "midquote": 13162.05,
+              "markquote": 13175.27,
+              "indexquote": 13151.25
+            },
+            "spread": {
+              "spreadband": 2.69,
+              "spreadrate": 0.0204
+            },
+            "metadata": {
+              "exchnote": "EX127     ",
+              "mktcombo": "ADA-USDC",
+              "timetrack": "2025-02-19T08:29:46.049442"
+            }
+          }
+        },
+        {
+          "marketdatanode": 9,
+          "quote_depth_snapshot": {
+            "depth": {
+              "askdepth": 423,
+              "askunits": 59.4743,
+              "biddepth": 268,
+              "bidunits": 14.2401
+            },
+            "quotes": {
+              "askquote": 47931.14,
+              "bidquote": 47901.35,
+              "midquote": 47916.24,
+              "markquote": 47865.34,
+              "indexquote": 47908.54
+            },
+            "spread": {
+              "spreadband": 29.79,
+              "spreadrate": 0.0622
+            },
+            "metadata": {
+              "exchnote": "EX984     ",
+              "mktcombo": "SOL-USDC",
+              "timetrack": "2025-02-19T08:29:46.049442"
+            }
+          }
+        },
+        {
+          "marketdatanode": 10,
+          "quote_depth_snapshot": {
+            "depth": {
+              "askdepth": 252,
+              "askunits": 86.428,
+              "biddepth": 62,
+              "bidunits": 86.6376
+            },
+            "quotes": {
+              "askquote": 39403.43,
+              "bidquote": 39358.02,
+              "midquote": 39380.72,
+              "markquote": 39435.4,
+              "indexquote": 39374.58
+            },
+            "spread": {
+              "spreadband": 45.41,
+              "spreadrate": 0.1153
+            },
+            "metadata": {
+              "exchnote": "EX989     ",
+              "mktcombo": "BTC-USDT",
+              "timetrack": "2025-02-19T08:29:46.049442"
+            }
+          }
+        }
+      ],
+      "pii_columns_masked": []
+    },
+    {
+      "table_name": "analyticsindicators",
+      "columns": [
+        {
+          "name": "analyticsindicatorsnode",
+          "type": "BIGINT",
+          "nullable": false,
+          "is_primary_key": true,
+          "foreign_key": null
+        },
+        {
+          "name": "mdataref",
+          "type": "BIGINT",
+          "nullable": true,
+          "is_primary_key": false,
+          "foreign_key": "marketdata.marketdatanode"
+        },
+        {
+          "name": "mstatsref",
+          "type": "BIGINT",
+          "nullable": true,
+          "is_primary_key": false,
+          "foreign_key": "marketstats.marketstatsmark"
+        },
+        {
+          "name": "market_sentiment_indicators",
+          "type": "JSONB",
+          "nullable": true,
+          "is_primary_key": false,
+          "foreign_key": null
+        }
+      ],
+      "sample_rows": [
+        {
+          "analyticsindicatorsnode": 3,
+          "mdataref": 3,
+          "mstatsref": 3,
+          "market_sentiment_indicators": {
+            "flow": {
+              "instflow": 0.395,
+              "flowimbal": 0.098,
+              "retailflow": 0.552,
+              "smartforce": -0.265,
+              "tradeimbal": -0.55,
+              "largeflowrate": 0.83
+            },
+            "walls": {
+              "buywallband": 0.052,
+              "sellwallband": 0.014
+            },
+            "momentum": {
+              "mktfeel": "Bearish",
+              "buyforce": 0.328,
+              "sellforce": 0.506,
+              "techmeter": "Buy"
+            },
+            "arbitrage": {
+              "fundgap": 0.0041,
+              "basisgap": 0.0048,
+              "xexchband": 0.0033,
+              "arbpotential": 0.0007
+            },
+            "big_players": {
+              "makermotion": "Low",
+              "whalemotion": "Medium"
+            },
+            "oscillators": {
+              "bbandspan": 65.31,
+              "macdtrail": 3.64,
+              "rsi14spot": 93.55
+            }
+          }
+        },
+        {
+          "analyticsindicatorsnode": 4,
+          "mdataref": 4,
+          "mstatsref": 4,
+          "market_sentiment_indicators": {
+            "flow": {
+              "instflow": 0.753,
+              "flowimbal": -0.3,
+              "retailflow": 0.023,
+              "smartforce": -0.739,
+              "tradeimbal": 0.848,
+              "largeflowrate": 0.352
+            },
+            "walls": {
+              "buywallband": 0.019,
+              "sellwallband": 0.068
+            },
+            "momentum": {
+              "mktfeel": "Bullish",
+              "buyforce": 0.317,
+              "sellforce": 0.824,
+              "techmeter": "Buy"
+            },
+            "arbitrage": {
+              "fundgap": 0.0073,
+              "basisgap": 0.0012,
+              "xexchband": 0.0021,
+              "arbpotential": 0.0006
+            },
+            "big_players": {
+              "makermotion": "High",
+              "whalemotion": "Low"
+            },
+            "oscillators": {
+              "bbandspan": 63.29,
+              "macdtrail": -7.91,
+              "rsi14spot": 51.89
+            }
+          }
+        },
+        {
+          "analyticsindicatorsnode": 5,
+          "mdataref": 5,
+          "mstatsref": 5,
+          "market_sentiment_indicators": {
+            "flow": {
+              "instflow": -0.621,
+              "flowimbal": 0.817,
+              "retailflow": 0.108,
+              "smartforce": -0.049,
+              "tradeimbal": -0.083,
+              "largeflowrate": 0.376
+            },
+            "walls": {
+              "buywallband": 0.038,
+              "sellwallband": 0.051
+            },
+            "momentum": {
+              "mktfeel": "Bearish",
+              "buyforce": 0.38,
+              "sellforce": 0.433,
+              "techmeter": "Sell"
+            },
+            "arbitrage": {
+              "fundgap": 0.0045,
+              "basisgap": 0.007,
+              "xexchband": 0.0087,
+              "arbpotential": 0.0064
+            },
+            "big_players": {
+              "makermotion": "Medium",
+              "whalemotion": "Medium"
+            },
+            "oscillators": {
+              "bbandspan": 88.3,
+              "macdtrail": -5.89,
+              "rsi14spot": 16.52
+            }
+          }
+        },
+        {
+          "analyticsindicatorsnode": 6,
+          "mdataref": 6,
+          "mstatsref": 6,
+          "market_sentiment_indicators": {
+            "flow": {
+              "instflow": -0.281,
+              "flowimbal": 0.942,
+              "retailflow": 0.947,
+              "smartforce": -0.589,
+              "tradeimbal": -0.503,
+              "largeflowrate": 0.023
+            },
+            "walls": {
+              "buywallband": 0.051,
+              "sellwallband": 0.02
+            },
+            "momentum": {
+              "mktfeel": "Bullish",
+              "buyforce": 0.527,
+              "sellforce": 0.932,
+              "techmeter": "Sell"
+            },
+            "arbitrage": {
+              "fundgap": 0.0083,
+              "basisgap": 0.0044,
+              "xexchband": 0.0089,
+              "arbpotential": 0.0069
+            },
+            "big_players": {
+              "makermotion": "Low",
+              "whalemotion": "Low"
+            },
+            "oscillators": {
+              "bbandspan": 90.44,
+              "macdtrail": -8.89,
+              "rsi14spot": 21.28
+            }
+          }
+        },
+        {
+          "analyticsindicatorsnode": 7,
+          "mdataref": 7,
+          "mstatsref": 7,
+          "market_sentiment_indicators": {
+            "flow": {
+              "instflow": 0.844,
+              "flowimbal": -0.276,
+              "retailflow": 0.945,
+              "smartforce": 0.967,
+              "tradeimbal": 0.706,
+              "largeflowrate": 0.82
+            },
+            "walls": {
+              "buywallband": 0.036,
+              "sellwallband": 0.024
+            },
+            "momentum": {
+              "mktfeel": "Bearish",
+              "buyforce": 0.462,
+              "sellforce": 0.657,
+              "techmeter": "Buy"
+            },
+            "arbitrage": {
+              "fundgap": 0.0059,
+              "basisgap": 0.0037,
+              "xexchband": 0.0021,
+              "arbpotential": 0.0001
+            },
+            "big_players": {
+              "makermotion": "High",
+              "whalemotion": "High"
+            },
+            "oscillators": {
+              "bbandspan": 31.02,
+              "macdtrail": -8.63,
+              "rsi14spot": 72.65
+            }
+          }
+        },
+        {
+          "analyticsindicatorsnode": 8,
+          "mdataref": 8,
+          "mstatsref": 8,
+          "market_sentiment_indicators": {
+            "flow": {
+              "instflow": -0.762,
+              "flowimbal": -0.739,
+              "retailflow": -0.694,
+              "smartforce": -0.75,
+              "tradeimbal": -0.362,
+              "largeflowrate": 0.355
+            },
+            "walls": {
+              "buywallband": 0.074,
+              "sellwallband": 0.045
+            },
+            "momentum": {
+              "mktfeel": "Bullish",
+              "buyforce": 0.376,
+              "sellforce": 0.288,
+              "techmeter": "Hold"
+            },
+            "arbitrage": {
+              "fundgap": 0.0048,
+              "basisgap": 0.0029,
+              "xexchband": 0.0033,
+              "arbpotential": 0.0004
+            },
+            "big_players": {
+              "makermotion": "High",
+              "whalemotion": "Low"
+            },
+            "oscillators": {
+              "bbandspan": 52.07,
+              "macdtrail": -6.99,
+              "rsi14spot": 44.65
+            }
+          }
+        },
+        {
+          "analyticsindicatorsnode": 9,
+          "mdataref": 9,
+          "mstatsref": 9,
+          "market_sentiment_indicators": {
+            "flow": {
+              "instflow": 0.998,
+              "flowimbal": 0.562,
+              "retailflow": 0.95,
+              "smartforce": -0.062,
+              "tradeimbal": 0.675,
+              "largeflowrate": 0.31
+            },
+            "walls": {
+              "buywallband": 0.083,
+              "sellwallband": 0.084
+            },
+            "momentum": {
+              "mktfeel": "Neutral",
+              "buyforce": 0.726,
+              "sellforce": 0.878,
+              "techmeter": "Buy"
+            },
+            "arbitrage": {
+              "fundgap": 0.0079,
+              "basisgap": 0.0014,
+              "xexchband": 0.0064,
+              "arbpotential": 0.0
+            },
+            "big_players": {
+              "makermotion": "High",
+              "whalemotion": "High"
+            },
+            "oscillators": {
+              "bbandspan": 26.1,
+              "macdtrail": 5.29,
+              "rsi14spot": 42.67
+            }
+          }
+        },
+        {
+          "analyticsindicatorsnode": 10,
+          "mdataref": 10,
+          "mstatsref": 10,
+          "market_sentiment_indicators": {
+            "flow": {
+              "instflow": -0.252,
+              "flowimbal": -0.884,
+              "retailflow": 0.575,
+              "smartforce": 0.75,
+              "tradeimbal": 0.861,
+              "largeflowrate": 0.194
+            },
+            "walls": {
+              "buywallband": 0.012,
+              "sellwallband": 0.028
+            },
+            "momentum": {
+              "mktfeel": "Neutral",
+              "buyforce": 0.016,
+              "sellforce": 0.56,
+              "techmeter": "Buy"
+            },
+            "arbitrage": {
+              "fundgap": 0.0003,
+              "basisgap": 0.0065,
+              "xexchband": 0.0089,
+              "arbpotential": 0.0094
+            },
+            "big_players": {
+              "makermotion": "High",
+              "whalemotion": "Medium"
+            },
+            "oscillators": {
+              "bbandspan": 62.95,
+              "macdtrail": 0.98,
+              "rsi14spot": 40.74
+            }
+          }
+        }
+      ],
+      "pii_columns_masked": []
+    }
+  ]
+}

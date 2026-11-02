@@ -1,0 +1,563 @@
+{
+  "generated_at": "2026-07-08T11:18:08.549687+00:00",
+  "tables": [
+    {
+      "table_name": "users",
+      "purpose": "This table records each system user. It tracks a unique internal node ID, a public user identifier, and the account scope (Margin, Spot, or Options).",
+      "column_meanings": [
+        {
+          "column": "usersnode",
+          "meaning": "Internal numeric identifier for the user record."
+        },
+        {
+          "column": "userstamp",
+          "meaning": "External user code, shown with trailing spaces in the sample."
+        },
+        {
+          "column": "acctscope",
+          "meaning": "The type of account the user is associated with (e.g., Margin, Spot, Options)."
+        }
+      ],
+      "relationships": "None (no foreign keys declared in this table).",
+      "business_value": "Allows the business to look up a user by code and see which account category they belong to, supporting user‑level reporting and segmentation.",
+      "ambiguity_flags": [
+        {
+          "column": "usersnode",
+          "note": "It appears to be an internal surrogate key, but the sample does not explain whether it has meaning beyond uniqueness."
+        },
+        {
+          "column": "acctscope",
+          "note": "Values are Margin, Spot, and Options; it is unclear if these represent product types, permission levels, or something else."
+        }
+      ]
+    },
+    {
+      "table_name": "riskandmargin",
+      "purpose": "This table records risk and margin information linked to a specific order. It stores a JSON profile containing detailed risk, position, collateral, and margin rate metrics for that order.",
+      "column_meanings": [
+        {
+          "column": "riskandmarginpivot",
+          "meaning": "Internal identifier for the risk‑and‑margin record."
+        },
+        {
+          "column": "ordervault",
+          "meaning": "Identifier of the order that this risk profile belongs to (matches orders.recordvault)."
+        },
+        {
+          "column": "risk_margin_profile",
+          "meaning": "A JSON document with nested sections such as iceberg, leverage, position, collateral, margin_rates, price_levels, risk_factors, and margin_thresholds."
+        }
+      ],
+      "relationships": "ordervault links to orders.recordvault.",
+      "business_value": "Enables analysts to examine an individual order's risk exposure, margin requirements, and collateral composition, supporting margin‑call and risk‑management decisions.",
+      "ambiguity_flags": [
+        {
+          "column": "risk_margin_profile",
+          "note": "The JSON fields are shown but the sample does not define the exact business meaning of each sub‑field or unit of measurement."
+        },
+        {
+          "column": "ordervault",
+          "note": "It can be null in the sample, so it is unclear whether every order always has an associated risk profile."
+        }
+      ]
+    },
+    {
+      "table_name": "orders",
+      "purpose": "This table records each trade order placed by a user. It tracks identifiers, timestamps, market pair, order type, side, price, quantity, notional amount, lifecycle status, and source information.",
+      "column_meanings": [
+        {
+          "column": "orderspivot",
+          "meaning": "Internal sequential ID for the order row."
+        },
+        {
+          "column": "recordvault",
+          "meaning": "Unique order code used as a reference by other tables."
+        },
+        {
+          "column": "timecode",
+          "meaning": "Date‑time when the order record was created or last updated."
+        },
+        {
+          "column": "exchspot",
+          "meaning": "Code of the exchange where the order was sent (padded with spaces in the sample)."
+        },
+        {
+          "column": "mktnote",
+          "meaning": "Market pair symbol, e.g., ETH‑USDT, BTC‑USDT."
+        },
+        {
+          "column": "orderstamp",
+          "meaning": "Another order identifier shown with trailing spaces."
+        },
+        {
+          "column": "userlink",
+          "meaning": "User code of the person who placed the order (links to users.userstamp)."
+        },
+        {
+          "column": "ordertune",
+          "meaning": "Order execution style such as Stop, Market, or Limit."
+        },
+        {
+          "column": "dealedge",
+          "meaning": "Whether the order is a Buy or Sell."
+        },
+        {
+          "column": "dealquote",
+          "meaning": "Price per unit quoted for the order."
+        },
+        {
+          "column": "dealcount",
+          "meaning": "Quantity of the asset to trade."
+        },
+        {
+          "column": "notionsum",
+          "meaning": "Total notional value (price multiplied by quantity)."
+        },
+        {
+          "column": "orderflow",
+          "meaning": "Current lifecycle state like New, Filled, PartiallyFilled, Cancelled."
+        },
+        {
+          "column": "timespan",
+          "meaning": "Time‑in‑force code such as IOC, GTC, GTD."
+        },
+        {
+          "column": "orderbase",
+          "meaning": "Source of the order, e.g., API, Web, Mobile."
+        },
+        {
+          "column": "clientmark",
+          "meaning": "Client‑supplied reference string."
+        },
+        {
+          "column": "createspot",
+          "meaning": "Timestamp when the order was originally created."
+        },
+        {
+          "column": "updatespot",
+          "meaning": "Timestamp of the most recent update to the order."
+        }
+      ],
+      "relationships": "userlink links to users.userstamp.",
+      "business_value": "Provides the foundation for measuring trading volume, revenue per market, order success rates, and user activity patterns across different execution venues and order types.",
+      "ambiguity_flags": [
+        {
+          "column": "exchspot",
+          "note": "The sample shows padded strings like \"EX203\"; it is not clear whether the code represents a specific exchange, a venue region, or something else."
+        },
+        {
+          "column": "orderbase",
+          "note": "Values API, Web, Mobile suggest order origin, but the exact distinction (e.g., automated vs. manual) is not defined."
+        },
+        {
+          "column": "clientmark",
+          "note": "Purpose of this client‑supplied identifier is unclear from the sample."
+        },
+        {
+          "column": "timespan",
+          "note": "Codes IOC, GTC, GTD are shown but the sample does not explain their exact meaning."
+        },
+        {
+          "column": "ordertune",
+          "note": "Stop, Market, Limit appear to be order types, yet the business rules distinguishing them are not described."
+        }
+      ]
+    },
+    {
+      "table_name": "accountbalances",
+      "purpose": "This table records the balance snapshot for each user. It tracks total wallet value, amounts that are available, frozen, required for margin, and profit‑and‑loss figures.",
+      "column_meanings": [
+        {
+          "column": "accountbalancesnode",
+          "meaning": "Internal ID for the balance record."
+        },
+        {
+          "column": "walletsum",
+          "meaning": "Total value of all assets held by the user."
+        },
+        {
+          "column": "availsum",
+          "meaning": "Portion of the wallet that is free to trade."
+        },
+        {
+          "column": "frozensum",
+          "meaning": "Amount that is locked or otherwise unavailable."
+        },
+        {
+          "column": "margsum",
+          "meaning": "Margin requirement amount for open positions."
+        },
+        {
+          "column": "unrealline",
+          "meaning": "Unrealized profit or loss (floating P/L)."
+        },
+        {
+          "column": "realline",
+          "meaning": "Realized profit or loss (settled P/L)."
+        },
+        {
+          "column": "usertag",
+          "meaning": "User code linking the balance to a user (matches users.userstamp)."
+        }
+      ],
+      "relationships": "usertag links to users.userstamp.",
+      "business_value": "Enables calculation of net asset value per client, assessment of margin sufficiency, and performance reporting of realized vs. unrealized gains.",
+      "ambiguity_flags": [
+        {
+          "column": "walletsum, availsum, frozensum, margsum",
+          "note": "The currency or unit (e.g., USD, USDC) is not specified in the sample."
+        },
+        {
+          "column": "unrealline, realline",
+          "note": "These appear to be profit‑and‑loss amounts, but the sign convention (positive vs. negative) is not explained."
+        }
+      ]
+    },
+    {
+      "table_name": "orderexecutions",
+      "purpose": "This table records the execution details of each order. It tracks how much of the order was filled, remaining quantity, fill price, total fill value, expiration time, cancellation reason, and execution side.",
+      "column_meanings": [
+        {
+          "column": "orderexecmark",
+          "meaning": "Internal ID for the execution record."
+        },
+        {
+          "column": "fillcount",
+          "meaning": "Quantity that was actually filled."
+        },
+        {
+          "column": "remaincount",
+          "meaning": "Quantity still pending after this execution."
+        },
+        {
+          "column": "fillquote",
+          "meaning": "Price at which the fill occurred."
+        },
+        {
+          "column": "fillsum",
+          "meaning": "Total monetary value of the filled portion."
+        },
+        {
+          "column": "expirespot",
+          "meaning": "Timestamp when the order would expire if not filled."
+        },
+        {
+          "column": "cancelnote",
+          "meaning": "Reason given for cancellation, if any."
+        },
+        {
+          "column": "exectune",
+          "meaning": "Indicator of maker or taker execution; values seen are \"Maker\", \"Taker\" or null."
+        },
+        {
+          "column": "ordersmark",
+          "meaning": "Order code that this execution belongs to (matches orders.recordvault)."
+        }
+      ],
+      "relationships": "ordersmark links to orders.recordvault.",
+      "business_value": "Provides the data needed to compute fill rates, slippage, and the effectiveness of order routing, as well as reasons for order cancellations.",
+      "ambiguity_flags": [
+        {
+          "column": "exectune",
+          "note": "When null, it is unclear whether the execution side is unknown or not applicable."
+        },
+        {
+          "column": "cancelnote",
+          "note": "Only some rows have a value; the full list of possible reasons is not defined."
+        },
+        {
+          "column": "fillquote, fillsum",
+          "note": "Units (currency) are not stated in the sample."
+        }
+      ]
+    },
+    {
+      "table_name": "systemmonitoring",
+      "purpose": "This table records operational performance metrics of the trading platform. It tracks API usage, latency, websocket status, rate limits, slippage, execution time, queue length, market impact measures, and a link to analytics indicators.",
+      "column_meanings": [
+        {
+          "column": "systemmonitoringpivot",
+          "meaning": "Internal ID for the monitoring snapshot."
+        },
+        {
+          "column": "apireqtotal",
+          "meaning": "Total number of API calls handled."
+        },
+        {
+          "column": "apierrtotal",
+          "meaning": "Total number of API errors encountered."
+        },
+        {
+          "column": "apilatmark",
+          "meaning": "Measured API latency (value masked in the sample)."
+        },
+        {
+          "column": "wsstate",
+          "meaning": "Current state of the websocket connection (Connected or Disconnected)."
+        },
+        {
+          "column": "rateremain",
+          "meaning": "Remaining API rate‑limit allowance."
+        },
+        {
+          "column": "lastupdnote",
+          "meaning": "Internal identifier for the last update event."
+        },
+        {
+          "column": "seqcode",
+          "meaning": "Sequence code associated with the snapshot."
+        },
+        {
+          "column": "slipratio",
+          "meaning": "Ratio indicating price slippage, shown with positive or negative sign."
+        },
+        {
+          "column": "exectimespan",
+          "meaning": "Execution time span value (units not specified)."
+        },
+        {
+          "column": "queueline",
+          "meaning": "Length of the processing queue at snapshot time."
+        },
+        {
+          "column": "mkteffect",
+          "meaning": "Numeric factor representing market impact."
+        },
+        {
+          "column": "priceeffect",
+          "meaning": "Numeric factor representing price impact."
+        },
+        {
+          "column": "aitrack",
+          "meaning": "ID linking to a set of analytics indicators (matches analyticsindicators.analyticsindicatorsnode)."
+        }
+      ],
+      "relationships": "aitrack links to analyticsindicators.analyticsindicatorsnode.",
+      "business_value": "Helps operations teams monitor system health, detect bottlenecks, and assess the impact of trading activity on market prices.",
+      "ambiguity_flags": [
+        {
+          "column": "apilatmark",
+          "note": "The actual latency number is masked, so the unit (milliseconds, seconds) cannot be confirmed."
+        },
+        {
+          "column": "slipratio",
+          "note": "Both positive and negative values appear; the business meaning of the sign is not explained."
+        },
+        {
+          "column": "exectimespan",
+          "note": "Units for this time span are not defined in the sample."
+        },
+        {
+          "column": "mkteffect, priceeffect",
+          "note": "The meaning of these numeric factors (e.g., percentage, basis points) is unclear."
+        }
+      ]
+    },
+    {
+      "table_name": "fees",
+      "purpose": "This table records the fees and rebates applied to each order. It tracks the fee tier, rate, total fee amount, currency, rebate rate, and total rebate for a given order.",
+      "column_meanings": [
+        {
+          "column": "feesnode",
+          "meaning": "Internal ID for the fee record."
+        },
+        {
+          "column": "feerange",
+          "meaning": "Label of the fee tier (e.g., Tier1, Tier2, etc.)."
+        },
+        {
+          "column": "feerate",
+          "meaning": "Proportion charged as fee (e.g., 0.0015)."
+        },
+        {
+          "column": "feetotal",
+          "meaning": "Total fee amount charged."
+        },
+        {
+          "column": "feecoin",
+          "meaning": "Currency in which the fee is denominated (e.g., USDC, USDT, USD)."
+        },
+        {
+          "column": "rebrate",
+          "meaning": "Proportion given back as rebate."
+        },
+        {
+          "column": "rebtotal",
+          "meaning": "Total rebate amount returned."
+        },
+        {
+          "column": "orderslink",
+          "meaning": "Order code that this fee record is associated with (matches orders.recordvault)."
+        }
+      ],
+      "relationships": "orderslink links to orders.recordvault.",
+      "business_value": "Allows calculation of total cost to clients per trade, assessment of revenue from fees, and evaluation of rebate programs.",
+      "ambiguity_flags": [
+        {
+          "column": "feerange",
+          "note": "The tier names (Tier1‑Tier4) are shown but the business rules that assign a tier to an order are not defined."
+        },
+        {
+          "column": "feecoin",
+          "note": "Multiple currencies appear; it is unclear whether conversion is applied elsewhere."
+        }
+      ]
+    },
+    {
+      "table_name": "marketstats",
+      "purpose": "This table records daily market statistics for each instrument. It tracks funding rates, open interest, daily volume, trade counts, turnover, price changes, high/low prices, VWAP, market size, supply figures, and liquidity rankings.",
+      "column_meanings": [
+        {
+          "column": "marketstatsmark",
+          "meaning": "Internal ID for the daily market stats row."
+        },
+        {
+          "column": "fundrate",
+          "meaning": "Funding rate applied to positions (value can be negative)."
+        },
+        {
+          "column": "fundspot",
+          "meaning": "Timestamp when the funding rate was recorded."
+        },
+        {
+          "column": "openstake",
+          "meaning": "Open interest amount for the day."
+        },
+        {
+          "column": "volday",
+          "meaning": "Total trading volume for the day (units not specified)."
+        },
+        {
+          "column": "tradeday",
+          "meaning": "Number of individual trades executed."
+        },
+        {
+          "column": "tnoverday",
+          "meaning": "Total turnover value for the day."
+        },
+        {
+          "column": "priceshiftday",
+          "meaning": "Percentage price change over the day."
+        },
+        {
+          "column": "highspotday",
+          "meaning": "Highest price reached during the day."
+        },
+        {
+          "column": "lowspotday",
+          "meaning": "Lowest price reached during the day."
+        },
+        {
+          "column": "vwapday",
+          "meaning": "Volume‑weighted average price for the day."
+        },
+        {
+          "column": "mktsize",
+          "meaning": "Overall market size (value not explicitly defined)."
+        },
+        {
+          "column": "circtotal",
+          "meaning": "Total circulating supply of the asset."
+        },
+        {
+          "column": "totsupply",
+          "meaning": "Total supply of the asset."
+        },
+        {
+          "column": "maxsupply",
+          "meaning": "Maximum possible supply of the asset."
+        },
+        {
+          "column": "mkthold",
+          "meaning": "Proportion of market held (decimal fraction)."
+        },
+        {
+          "column": "traderank",
+          "meaning": "Rank of the market based on trading activity."
+        },
+        {
+          "column": "liquidscore",
+          "meaning": "Liquidity score (higher indicates more liquid)."
+        },
+        {
+          "column": "volmeter",
+          "meaning": "Additional volume metric (unit not explained)."
+        },
+        {
+          "column": "mdlink",
+          "meaning": "Link to a market data snapshot (matches marketdata.marketdatanode)."
+        }
+      ],
+      "relationships": "mdlink links to marketdata.marketdatanode.",
+      "business_value": "Supports market‑analysis teams in evaluating liquidity, price movement, funding cost, and supply dynamics for each trading pair.",
+      "ambiguity_flags": [
+        {
+          "column": "volday, mktsize, circtotal, totsupply, maxsupply",
+          "note": "The units (e.g., contracts, dollars, tokens) are not indicated in the sample."
+        },
+        {
+          "column": "fundrate",
+          "note": "Both positive and negative values appear; the business interpretation of a negative funding rate is not described."
+        },
+        {
+          "column": "priceshiftday, liquidscore, volmeter",
+          "note": "The scale (percentage, points, index) is ambiguous from the sample alone."
+        }
+      ]
+    },
+    {
+      "table_name": "marketdata",
+      "purpose": "This table stores a snapshot of order‑book depth and quote information for a market at a specific moment. It includes ask/bid depth, price quotes, spread, and metadata about the exchange and market pair.",
+      "column_meanings": [
+        {
+          "column": "marketdatanode",
+          "meaning": "Internal ID for the market data snapshot."
+        },
+        {
+          "column": "quote_depth_snapshot",
+          "meaning": "JSON document containing depth (askdepth, biddepth, etc.), quotes (askquote, bidquote, midquote, etc.), spread details, and metadata such as exchange code, market pair, and timestamp."
+        }
+      ],
+      "relationships": "None declared in this table (referenced by marketstats.mdlink and analyticsindicators.mdataref).",
+      "business_value": "Provides the raw market state needed for pricing, liquidity analysis, and feeding downstream sentiment calculations.",
+      "ambiguity_flags": [
+        {
+          "column": "quote_depth_snapshot",
+          "note": "The JSON structure is shown, but the business meaning of each numeric field (e.g., askdepth vs. askunits) is not explained."
+        }
+      ]
+    },
+    {
+      "table_name": "analyticsindicators",
+      "purpose": "This table records calculated market sentiment indicators derived from market data and market statistics. It links to a specific market data snapshot and daily market stats and stores a JSON of various sentiment metrics.",
+      "column_meanings": [
+        {
+          "column": "analyticsindicatorsnode",
+          "meaning": "Internal ID for the sentiment indicator record."
+        },
+        {
+          "column": "mdataref",
+          "meaning": "Reference to a market data snapshot (matches marketdata.marketdatanode)."
+        },
+        {
+          "column": "mstatsref",
+          "meaning": "Reference to daily market stats (matches marketstats.marketstatsmark)."
+        },
+        {
+          "column": "market_sentiment_indicators",
+          "meaning": "JSON object containing sub‑sections such as flow, walls, momentum, arbitrage, big_players, and oscillators with numeric and textual metrics."
+        }
+      ],
+      "relationships": "mdataref links to marketdata.marketdatanode; mstatsref links to marketstats.marketstatsmark.",
+      "business_value": "Enables traders and analysts to gauge market mood, potential price pressure, and trading dynamics using composite sentiment scores.",
+      "ambiguity_flags": [
+        {
+          "column": "market_sentiment_indicators",
+          "note": "The JSON fields (e.g., instflow, buywallband, mktfeel) are shown but their precise business definitions and scales are not described in the sample."
+        }
+      ]
+    }
+  ],
+  "complexity_score": 89.0,
+  "tier": 1
+}
