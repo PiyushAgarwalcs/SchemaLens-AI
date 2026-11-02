@@ -73,6 +73,18 @@ Open the local URL printed by Streamlit, usually <http://localhost:8501>. Select
 
 The repository includes previously generated documentation, so you can browse it without configuring an API key. Scanning the included SQLite demo or using AI chat requires the Fireworks configuration below.
 
+## User workflow
+
+1. **Start the app** using the Quickstart commands and open its local Streamlit URL.
+2. **Choose a database** in the sidebar. Use **SQLite demo** to try the included sample data without setting up a database server.
+3. **Browse the existing documentation** immediately, or add a Fireworks API key and select **Scan Database** to analyze the selected database. PII masking is enabled by default.
+4. **Review the generated results** in the Documentation tab. A successful scan updates the Context Pack, schema analysis, and Markdown documentation under `data/`.
+5. **Ask questions** in the chat tab. Questions about the documented schema can be answered from the Context Pack; questions requiring records or aggregates can generate and execute a `SELECT` query against the selected database. AI chat requires a Fireworks API key.
+6. **Export or share the context** by downloading the Context Pack from the sidebar or configuring an MCP client as described below.
+7. **Check for schema drift** after changes to the database. Select **Check for Schema Drift** to compare its current structure with the last saved scan.
+
+The SQLite demo uses only the included sample rows; it does not contain or connect to your own data. For PostgreSQL, configure a read-only database account before scanning or running generated queries.
+
 ## Fireworks configuration
 
 Create a `.env` file in the project root and add your Fireworks API key:
